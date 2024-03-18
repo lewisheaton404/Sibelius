@@ -1,0 +1,26 @@
+﻿@using Umbraco.Extensions
+@inherits UmbracoViewPage<BlockGridItem<ImageGalleryBlock>>
+@{
+    if(Model.Content.Images == null)
+    {
+        return;
+    }
+    if(Model.Content.Images.ToList().Count == 0)
+    {
+        return;
+    }
+}
+
+<section class="image-gallery-block padded-small @(Model.Content.BackgroundGray ? "bg--grey" : "bg--white")">
+    <div class="wrap wrap-medium">
+        <div class="items">
+            @foreach (var item in Model.Content.Images)
+            {
+                var url = @item.GetCropUrl("Image gallery");
+                <div class="item" data-item="@url">
+                    <img src="@url" />
+                </div>
+            }
+        </div>
+    </div>
+</section>

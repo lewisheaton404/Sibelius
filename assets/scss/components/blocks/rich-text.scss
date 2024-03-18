@@ -20,7 +20,7 @@
         }
     }
 
-    ul {
+    ul, ol {
         list-style: disc;
         padding-left: 1rem;
 
@@ -29,6 +29,20 @@
             + li {
                 margin-top: 1rem;
             }
+        }
+    }
+
+    table {
+        border: 1px solid $mid-grey;
+        border-radius: $border-radius;
+
+        tr {
+            border-bottom: 1px solid $mid-grey;
+        }
+
+        td {
+            border-right: 1px solid $mid-grey;
+            padding: 0.2rem 0.5rem;
         }
     }
 }

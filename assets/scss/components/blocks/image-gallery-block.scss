@@ -1,0 +1,44 @@
+﻿section.image-gallery-block {
+
+    .items {
+        @include clearfix();
+
+        .item {
+            float: left;
+            display: flex;
+            border-radius: $border-radius;
+            overflow: hidden;
+        }
+
+        @include mobile {
+
+            .item {
+                width: calc(50% - 0.5rem);
+
+                &:nth-child(odd) {
+                    margin-right: 1rem;
+                }
+
+                &:nth-child(n+3) {
+                    margin-top: 1rem;
+                }
+            }
+        }
+
+        @include tablet-and-desktop {
+
+            .item {
+                width: calc(25% - 0.75rem);
+                margin-right: 1rem;
+
+                &:nth-child(4n+4) {
+                    margin-right: 0;
+                }
+
+                &:nth-child(n+5) {
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,9 @@
-﻿@using Umbraco.Extensions
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+﻿@inherits UmbracoViewPage<BlockGridItem<RichTextBlock>>
 
-<div style="padding: 20px">
-@Model.Content.Value("richText")
-</div>
+<section class="rich-text padded-small">
+    <div class="wrap wrap-medium">
+        <div class="rte">
+            @Html.Raw(Model.Content.RichText)
+        </div>
+    </div>
+</section>
