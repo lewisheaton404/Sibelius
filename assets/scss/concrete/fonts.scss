@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: $normal;
+    font-display: swap;
+    src: url('/font/Inter-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: $medium;
+    font-display: swap;
+    src: url('/font/Inter-Medium.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: $bold;
+    font-display: swap;
+    src: url('/font/Inter-Bold.ttf') format('ttf');
+}
+
+body, * {
+    font-family: Inter;
+    color: $black;
+}

@@ -1,0 +1,31 @@
+@inherits UmbracoViewPage<MetaPartialViewModel>
+@{
+    var currentPageUrl = Umbraco.AssignedContentItem.Url(mode: UrlMode.Absolute);
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@Model.PageTitle</title>
+<meta name="description" content="@Model.MetaDescription" />
+
+@*@Model.NoIndexNoFollowValue*@
+<meta name="robots" content="NOINDEX,NOFOLLOW">
+
+@* <meta property="og:type" content="" /> *@
+<meta property="og:title" content="@Model.PageTitle" />
+<meta property="og:description" content="@Model.MetaDescription" />
+@if (Model.MetaImage != null)
+{
+    @* TODO: Crop *@
+    <meta property="og:image" content="@Model.MetaImage.Url(mode: UrlMode.Absolute)" />
+}
+<meta property="og:url" content="@currentPageUrl" />
+@* <meta property="og:site_name" content="@Model.OgSiteName" /> *@
+
+<meta name="twitter:title" content="@Model.PageTitle">
+<meta name="twitter:description" content="@Model.MetaDescription">
+@if (Model.MetaImage != null)
+{
+    <meta name="twitter:image" content="@Model.MetaImage.Url(mode: UrlMode.Absolute)">
+}
+@* <meta name="twitter:site" content="@Model.TwitterSite">
+<meta name="twitter:creator" content="@Model.TwitterCreator"> *@

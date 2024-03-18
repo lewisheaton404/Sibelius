@@ -1,0 +1,44 @@
+﻿@using Umbraco.Extensions
+@inherits UmbracoViewPage<BlockGridItem<SolidBackgroundBlock>>
+
+@if (Model.Content.FullWidth)
+{
+	<section class="solid-background">
+		<span class="detail"></span>
+		<span class="detail"></span>
+		<div class="wrap wrap-medium padded-medium">
+			<div class="title-section center">
+				@if (!string.IsNullOrWhiteSpace(Model.Content.Title))
+				{
+					<h2>@Model.Content.Title</h2>
+				}
+				<p>@Model.Content.Text</p>
+				@if (Model.Content.Link != null)
+				{
+					<a href="@Model.Content.Link.Url" class="button white" @(Model.Content.Link.Url.StartsWith("#") ? "data-smooth-scroll" : "")> @Model.Content.Link.Name</a>
+				}
+			</div>
+		</div>
+	</section>
+}
+else {
+	<div class="wrap wrap-large padded-medium">
+		<section class="solid-background">
+			<span class="detail"></span>
+			<span class="detail"></span>
+			<div class="wrap wrap-medium padded-medium">
+				<div class="title-section center">
+					@if (!string.IsNullOrWhiteSpace(Model.Content.Title))
+					{
+						<h2>@Model.Content.Title</h2>
+					}
+					<p>@Model.Content.Text</p>
+					@if (Model.Content.Link != null)
+					{
+						<a href="@Model.Content.Link.Url" class="button white" @(Model.Content.Link.Url.StartsWith("#") ? "data-smooth-scroll" : "")> @Model.Content.Link.Name</a>
+					}
+				</div>
+			</div>
+		</section>
+	</div>
+}

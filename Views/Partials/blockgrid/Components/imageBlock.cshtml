@@ -1,0 +1,17 @@
+﻿@using Umbraco.Extensions
+@inherits UmbracoViewPage<BlockGridItem<ImageBlock>>
+
+@if (Model.Content.FullWidth)
+{
+    <section class="image-block @(Model.Content.BackgroundGray ? "bg--grey" : "bg--white") full">
+        <img src="@Model.Content.Image?.GetCropUrl("Image block")" />
+    </section>
+}
+else
+{
+    <section class="image-block padded-small @(Model.Content.BackgroundGray ? "bg--grey" : "bg--white")">
+        <div class="wrap wrap-medium">
+            <img src="@Model.Content.Image?.GetCropUrl("Image block small")" />
+        </div>
+    </section>
+}

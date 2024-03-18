@@ -1,0 +1,45 @@
+.button {
+    background-color: var(--page-theme);
+    color: white;
+    font-weight: $bold;
+    padding: 0.8rem 1.4rem;
+    display: table;
+    text-decoration: none;
+    font-size: 0.7rem;
+    border: 2px solid var(--page-theme);
+    transition: $ease $speed border, $ease $speed background-color, $ease $speed color;
+    border-radius: $border-radius;
+    cursor: pointer;
+    
+    &:hover, &:focus {
+        border: 2px solid var(--page-theme) !important;
+        background-color: $white !important;
+        color: var(--page-theme) !important;
+    }
+
+    &.white {
+        background-color: $white;
+        border-color: $white;
+        color: var(--page-theme);
+
+        &:hover,
+        &:focus {
+            border: 2px solid $white !important;
+            background-color: var(--page-theme) !important;
+            color: $white !important;
+        }
+    }
+
+    &.primary {
+        background-color: var(--primary-theme);
+        border-color: var(--primary-theme);
+        color: white;
+
+        &:hover,
+        &:focus {
+            border: 2px solid var(--primary-theme) !important;
+            background-color: white !important;
+            color: var(--primary-theme) !important;
+        }
+    }
+}

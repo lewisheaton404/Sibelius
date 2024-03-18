@@ -1,0 +1,141 @@
+.title-section {
+    &.center {
+        text-align: center;
+
+        *{
+            margin: 0 auto;
+        }
+    }
+
+    .pip{
+        margin-bottom: 1rem;
+    }
+}
+
+.pip {
+    color: var(--page-theme);
+    display: table;
+    font-weight: $bold;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.7rem;
+    position: relative;
+
+    &::after {
+        background-color: var(--page-theme);
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.15;
+        border-radius: $border-radius;
+    }
+}
+
+.bg--grey{
+    background-color: $light-grey;
+}
+
+.bg--white{
+    background-color: $white;
+}
+
+.tint {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $black;
+        opacity: 0.5;
+        z-index: 1;
+    }
+
+    * {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0,0,0,0.75);
+    z-index: 99999999;
+    opacity: 0;
+    visibility: hidden;
+    transition: $ease $speed opacity, $ease $speed visibility;
+
+    @include mobile {
+        padding-top: 2rem;
+
+        .content {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
+    }
+
+    @include tablet-and-desktop {
+        padding-top: 3rem;
+
+        .content {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .content {
+        background-color: $white;
+        overflow: auto;
+        max-height: calc(100vh - 4rem);
+
+        .text {
+            margin-top: 1rem;
+
+            * {
+                color: $mid-grey;
+            }
+        }
+
+        .title {
+            padding-right: 5rem;
+        }
+
+        .post-title {
+            padding-right: 5rem;
+        }
+
+        .link {
+            margin-top: 2rem;
+        }
+    }
+
+    .close {
+        position: fixed;
+
+        @include mobile {
+            top: 1rem;
+            right: 1rem;
+        }
+
+        @include tablet-and-desktop {
+            top: 2rem;
+            right: 2rem;
+        }
+    }
+}

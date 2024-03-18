@@ -1,0 +1,146 @@
+.wrap {
+    padding-left: var(--bs-gutter-x,.75rem);
+    padding-right: var(--bs-gutter-x,.75rem);
+    margin-left: auto;
+    margin-right: auto;
+
+    .container, .container-fluid{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.wrap-large {
+    max-width: 1300px;
+}
+
+.wrap-medium {
+    max-width: 1100px;
+}
+
+.wrap-small {
+    max-width: 800px;
+}
+
+@include mobile {
+    .padded-large {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .padded-top-large {
+        padding-top: 2rem;
+    }
+
+    .padded-bottom-large {
+        padding-bottom: 2rem;
+    }
+
+    .padded-medium {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .padded-top-medium {
+        padding-top: 1.25rem;
+    }
+
+    .padded-bottom-medium {
+        padding-bottom: 1.25rem;
+    }
+
+    .padded-small {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .padded-top-small {
+        padding-top: 1rem;
+    }
+
+    .padded-bottom-small {
+        padding-bottom: 1rem;
+    }
+}
+
+@include tablet {
+    .padded-large {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .padded-top-large {
+        padding-top: 3.5rem;
+    }
+
+    .padded-bottom-large {
+        padding-bottom: 3.5rem;
+    }
+
+    .padded-medium {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .padded-top-medium {
+        padding-top: 2.5rem;
+    }
+
+    .padded-bottom-medium {
+        padding-bottom: 2.5rem;
+    }
+
+    .padded-small {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .padded-top-small {
+        padding-top: 1.5rem;
+    }
+
+    .padded-bottom-small {
+        padding-bottom: 1.5rem;
+    }
+}
+
+@include desktop {
+    .padded-large {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+    .padded-top-large {
+        padding-top: 6rem;
+    }
+
+    .padded-bottom-large {
+        padding-bottom: 6rem;
+    }
+
+    .padded-medium {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .padded-top-medium {
+        padding-top: 4rem;
+    }
+
+    .padded-bottom-medium {
+        padding-bottom: 4rem;
+    }
+
+    .padded-small {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .padded-top-small {
+        padding-top: 2rem;
+    }
+
+    .padded-bottom-small {
+        padding-bottom: 2rem;
+    }
+}

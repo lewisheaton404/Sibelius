@@ -1,0 +1,83 @@
+section.link-to-addition-pages-block {
+
+    &.dark {
+        background-color: $light-grey;
+    }
+
+    .content {
+        .items {
+            @include clearfix();
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .item {
+                float: left;
+                text-decoration: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background-position: center;
+                background-size: cover;
+                border-radius: $border-radius;
+
+                &:hover, &:focus {
+                    span {
+                        text-decoration: none;
+                    }
+                }
+
+                * {
+                    color: white;
+                }
+
+                p {
+                    margin-top: 0.5rem;
+                }
+
+                span {
+                    font-size: 0.8rem;
+                    text-decoration: underline;
+                    margin-top: 1.5rem;
+                    display: block;
+                }
+
+                @include mobile {
+                    width: 100%;
+                    padding: 1rem;
+
+                    + .item {
+                        margin-top: 1rem;
+                    }
+                }
+
+                @include tablet {
+                    width: calc(50% - 0.5rem);
+                    padding: 1rem;
+
+                    &:nth-child(1) {
+                        margin-right: 1rem;
+                    }
+
+                    &:nth-child(3) {
+                        margin-top: 1rem;
+                    }
+                }
+
+                @include desktop {
+                    width: calc(33.333333% - 1.5rem);
+                    padding: 2rem;
+                    min-height: 350px;
+
+                    &:nth-child(1) {
+                        margin-right: 2rem;
+                    }
+
+                    &:nth-child(3) {
+                        margin-left: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}

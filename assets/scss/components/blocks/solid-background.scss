@@ -1,0 +1,59 @@
+.wrap {
+    section.solid-background {
+        border-radius: $border-radius;
+    }
+}
+
+
+section.solid-background {
+    background-color: var(--page-theme);
+    position: relative;
+    overflow: hidden;
+
+    .detail {
+        width: 50rem;
+        height: 50rem;
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        opacity: 0.07;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 50%;
+            height: 50%;
+            border-radius: 50%;
+            background-color: var(--page-theme);
+            position: absolute;
+            top: 25%;
+            left: 25%;
+        }
+
+        &:nth-child(1) {
+            bottom: -40%;
+            left: -30rem;
+        }
+
+        &:nth-child(2) {
+            bottom: 5rem;
+            right: -30rem;
+        }
+    }
+
+    * {
+        color: white;
+        position: relative;
+        z-index: 2;
+    }
+
+    .wrap {
+        p {
+            margin-top: 0.5rem;
+        }
+
+        a.button {
+            margin-top: 2.5rem;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+@inherits UmbracoViewPage<IPublishedContent>
+@{
+    var root = Model.Root<HomePage>();
+    var children = root?.Children.Where(x => x.IsVisible()).ToList();
+}
+
+<header>
+    <div class="wrap wrap-large">
+        <a href="@root?.Url()" class="logo">
+            <img src="~/img/logo-small.png" alt="Sibelius Natural Products"/>    
+        </a>
+        <nav>
+            @if (children?.Count > 0)
+            {
+                <ul>
+                    @foreach (var item in children)
+                    {
+                        var settings = new SettingsComposition(item, PublishedValueFallback);
+                        var focus = children.IndexOf(item) == (children.Count - 1);
+                        var active = item.Id.Equals(Model.Id);
+                        if (!active)
+                        {
+                            active = item.Children.FirstOrDefault(x => x.Id.Equals(Model.Id)) != null;
+                        }
+                        <li class="@(focus ? "focus" : "normal")">
+                            <a href="@item.Url()" class="@(focus ? "button primary" : "normal") @(active ? "active" : "")">@(!string.IsNullOrWhiteSpace(settings.NavigationTitle) ? settings.NavigationTitle : item.Name)</a>
+                        </li>
+                    }
+                </ul>
+            }
+        </nav>
+        <button class="menu">
+            <span></span>
+        </button>
+    </div>
+</header>

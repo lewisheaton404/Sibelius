@@ -1,0 +1,104 @@
+﻿@using Umbraco.Extensions
+@inherits UmbracoViewPage<BlockGridItem<MeetTheTeamBlock>>
+@{
+    if(Model.Content.Team == null)
+    {
+        return;
+    }
+    if(Model.Content.Team.Count == 0)
+    {
+        return;
+    }
+    var members = Model.Content.Team.Select(x => new TeamMemberBlock(x.Content, PublishedValueFallback));
+}
+
+<section class="meet-the-team padded-medium @(Model.Content.BackgroundGray ? "bg--grey" : "bg--white")">
+    <div class="wrap wrap-medium">
+        <div class="items">
+            @foreach (var item in members)
+            {
+                var val = !string.IsNullOrWhiteSpace(item.Description?.ToHtmlString()) && !string.IsNullOrWhiteSpace(item.FullName) ? true : false;
+                <a href="#"
+                   data-modal="@val"
+                   data-modal-title="<h3>@item.FullName</h3>"
+                   data-modal-post-title="<p>@item.JobTitle</p>"
+                   data-modal-content="@item.Description?.ToHtmlString()"
+                   data-modal-link="@item.LinkedIn?.Url"
+                   data-modal-link-text="View @item.FullName on LinkedIn"
+                   class="item tint"
+                   title="@item.FullName"
+                   style="background-image: url(@item.Image.GetCropUrl("Team member");">
+                    <h3>@item.FullName</h3>
+                    <p>@item.JobTitle</p>
+                    @if (val)
+                    {
+                        <span>Learn more</span>
+                    }
+                </a>
+            }
+            @foreach (var item in members)
+            {
+                var val = !string.IsNullOrWhiteSpace(item.Description?.ToHtmlString()) && !string.IsNullOrWhiteSpace(item.FullName) ? true : false;
+                <a href="#"
+                   data-modal="@val"
+                   data-modal-title="<h3>@item.FullName</h3>"
+                   data-modal-post-title="<p>@item.JobTitle</p>"
+                   data-modal-content="@item.Description?.ToHtmlString()"
+                   data-modal-link="@item.LinkedIn?.Url"
+                   data-modal-link-text="View @item.FullName on LinkedIn"
+                   class="item tint"
+                   title="@item.FullName"
+                   style="background-image: url(@item.Image.GetCropUrl("Team member");">
+                    <h3>@item.FullName</h3>
+                    <p>@item.JobTitle</p>
+                    @if (val)
+                    {
+                        <span>Learn more</span>
+                    }
+                </a>
+            }
+            @foreach (var item in members)
+            {
+                var val = !string.IsNullOrWhiteSpace(item.Description?.ToHtmlString()) && !string.IsNullOrWhiteSpace(item.FullName) ? true : false;
+                <a href="#"
+                   data-modal="@val"
+                   data-modal-title="<h3>@item.FullName</h3>"
+                   data-modal-post-title="<p>@item.JobTitle</p>"
+                   data-modal-content="@item.Description?.ToHtmlString()"
+                   data-modal-link="@item.LinkedIn?.Url"
+                   data-modal-link-text="View @item.FullName on LinkedIn"
+                   class="item tint"
+                   title="@item.FullName"
+                   style="background-image: url(@item.Image.GetCropUrl("Team member");">
+                    <h3>@item.FullName</h3>
+                    <p>@item.JobTitle</p>
+                    @if (val)
+                    {
+                        <span>Learn more</span>
+                    }
+                </a>
+            }
+            @foreach (var item in members)
+            {
+                var val = !string.IsNullOrWhiteSpace(item.Description?.ToHtmlString()) && !string.IsNullOrWhiteSpace(item.FullName) ? true : false;
+                <a href="#"
+                   data-modal="@val"
+                   data-modal-title="<h3>@item.FullName</h3>"
+                   data-modal-post-title="<p>@item.JobTitle</p>"
+                   data-modal-content="@item.Description?.ToHtmlString()"
+                   data-modal-link="@item.LinkedIn?.Url"
+                   data-modal-link-text="View @item.FullName on LinkedIn"
+                   class="item tint"
+                   title="@item.FullName"
+                   style="background-image: url(@item.Image.GetCropUrl("Team member");">
+                    <h3>@item.FullName</h3>
+                    <p>@item.JobTitle</p>
+                    @if (val)
+                    {
+                        <span>Learn more</span>
+                    }
+                </a>
+            }
+        </div>
+    </div>
+</section>

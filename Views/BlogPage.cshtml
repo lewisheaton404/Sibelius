@@ -1,0 +1,13 @@
+﻿@inherits UmbracoViewPage<BlogPageViewModel>
+@{
+	Layout = "_Layout.cshtml";
+}
+
+<section class="blog-title padded-medium bg--grey">
+	<div class="wrap wrap-large">
+		<p>Posted, @Model.PublishedDate</p>
+		<h1>@Model.CurrentPage.NavigationTitle</h1>
+	</div>
+</section>
+
+@await Html.GetBlockGridHtmlAsync(Model.CurrentPage.GridContent)

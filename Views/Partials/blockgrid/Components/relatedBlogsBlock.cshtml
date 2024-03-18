@@ -1,0 +1,41 @@
+﻿@using Sibelius.Business.Services.Concrete
+@using Umbraco.Extensions
+@inject IBlogHelper BlogHelper
+@inherits UmbracoViewPage<BlockGridItem<RelatedBlogsBlock>>
+@{
+	var blogs = new List<BlogPage>();
+	var chosenBlogs = Model.Content.Blogs?.ToList();
+	if (chosenBlogs == null)
+	{
+		blogs = BlogHelper.GetRelatedBlogPosts(Umbraco.AssignedContentItem);
+	}
+	else
+	{
+		blogs = chosenBlogs.Select(x => new BlogPage(x, PublishedValueFallback)).ToList();
+	}
+}
+@if (blogs.Count > 0)
+{
+	<section class="link-to-addition-pages-block padded-medium @(Model.Content.BackgroundGray ? "bg--grey" : "bg--white")">
+		<div class="wrap wrap-small padded-bottom-small">
+			<div class="title-section center">
+				<span class="pip">@(!string.IsNullOrWhiteSpace(Model.Content?.Pip) ? Model.Content?.Pip : "Read more")</span>
+				<h2>@(!string.IsNullOrWhiteSpace(Model.Content?.Title) ? Model.Content?.Title : "Related")</h2>
+			</div>
+		</div>
+		<div class="wrap wrap-large">
+			<div class="content">
+				<div class="items">
+					@foreach (var item in blogs)
+					{
+						<a class="item tint" href="@item.Url()" style="background-image: url(@item.FeaturedImage?.GetCropUrl("Related blog post"));">
+							<h3>@(!string.IsNullOrWhiteSpace(item.FeaturedTitle) ? item.FeaturedTitle : item.Name)</h3>
+							<p>@item.FeaturedDescription</p>
+							<span>Learn more</span>
+						</a>
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+}

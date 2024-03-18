@@ -1,0 +1,245 @@
+header {
+    background-color: $white;
+    z-index: 5;
+
+    .wrap {
+        @include clearfix();
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 5rem;
+        height: 100%;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        outline: none;
+
+        span, span::before, span::after {
+            content: "";
+            display: block;
+            height: 2px;
+            background-color: $black;
+            position: absolute;
+            left: calc(50% - 8px);
+            transition: $ease $speed width, $ease $speed transform, $ease $speed top, $ease $speed left;
+        }
+
+        span {
+            top: calc(50% - 1px);
+            width: 16px;
+
+            &::before {
+                top: calc(50% - 8px);
+                width: 18px;
+            }
+
+            &::after {
+                top: calc(50% + 6px);
+                width: 20px;
+            }
+        }
+    }
+
+    .logo {
+        width: 160px;
+        float: left;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    nav {
+        ul {
+            li {
+                list-style: none;
+
+                a {
+                    text-decoration: none;
+                    font-weight: $medium;
+                }
+            }
+        }
+    }
+
+    @include mobile {
+        padding: 0.2rem 0;
+
+        .logo {
+            width: 130px;
+        }
+
+        .menu {
+            width: 4rem !important;
+        }
+
+        nav {
+            top: 67px !important;
+        }
+    }
+
+    @include mobile-and-tablet {
+        position: relative;
+
+        nav {
+            position: fixed;
+            top: 73px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            background-color: var(--primary-theme);
+            opacity: 0;
+            visibility: hidden;
+            transition: $ease $speed opacity, $ease $speed visibility, $ease $speed transform;
+            transform: translate(0, 10px);
+            padding: var(--bs-gutter-x,.75rem);
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+
+            ul {
+                li {
+                    a {
+                        color: white;
+                    }
+
+                    &.focus {
+                        .button {
+                            font-size: unset;
+                            font-weight: $medium;
+                            padding: unset;
+                            transition: unset;
+                            border: unset !important;
+                            display: unset;
+
+                            &:hover, &:focus {
+                                background-color: unset;
+                                color: $white;
+                            }
+                        }
+                    }
+
+                    + li {
+                        margin-top: 1rem;
+                    }
+                }
+            }
+        }
+
+        &.active {
+            nav {
+                opacity: 1;
+                visibility: visible;
+                transform: translate(0,0);
+            }
+
+            .menu {
+                span {
+                    width: 0;
+
+                    &::before, &::after {
+                        width: 20px;
+                        left: 50%;
+                    }
+
+                    &::before {
+                        transform: rotate(45deg);
+                        top: 0;
+                    }
+
+                    &::after {
+                        transform: rotate(-45deg);
+                        top: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    @include desktop {
+        padding: 0.5rem 0;
+
+        .menu {
+            display: none;
+        }
+
+        nav {
+            float: left;
+            width: calc(100% - 183px);
+            text-align: right;
+
+            ul {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+
+                li {
+                    display: inline-block;
+
+                    + li {
+                        margin-left: 2rem;
+                    }
+
+                    a {
+                        font-size: 0.8rem;
+
+                        &.active {
+                            text-decoration: underline;
+                            color: var(--primary-theme);
+                        }
+
+                        &:hover,
+                        &:focus {
+                            text-decoration: underline;
+                        }
+
+                        &.button {
+                            &:hover,
+                            &:focus {
+                                text-decoration: unset;
+                                color: var(--primary-theme) !important;
+                            }
+
+                            &.active {
+                                color: white;
+                                text-decoration: unset;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include mobile-and-tablet {
+    body {
+        &::after {
+            content: "";
+            display: block;
+            background-color: $black;
+            opacity: 0.5;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: $ease $speed opacity, $ease $speed visibility;
+        }
+
+        &.navigation-active {
+            &::after {
+                opacity: 0.5;
+                visibility: visible;
+                transition-delay: 0.15s;
+            }
+        }
+    }
+}

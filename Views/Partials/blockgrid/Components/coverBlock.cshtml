@@ -1,0 +1,17 @@
+﻿@using Umbraco.Extensions
+@inherits UmbracoViewPage<BlockGridItem<CoverBlock>>
+
+<section class="cover padded-large @(Model.Content.BackgroundGray ? "bg--grey" : "bg--white")">
+	<div class="wrap wrap-large">
+		<div class="content">
+			<div class="padded-bottom-small">
+				<h1>@Model.Content.Title<h1>
+			</div>
+			<p>@Model.Content.Content<p>
+			@if(Model.Content.Link != null)
+			{
+				<a href="@Model.Content.Link.Url" class="button" @(Model.Content.Link.Url.StartsWith("#") ? "data-smooth-scroll" : "")> @Model.Content.Link.Name</a>
+			}
+		</div>
+	</div>
+</section>

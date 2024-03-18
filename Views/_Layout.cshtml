@@ -1,0 +1,59 @@
+﻿@using System.Drawing
+@inherits UmbracoViewPage<IPublishedContent>
+@{
+	var theme = new ThemeComposition(Model, PublishedValueFallback);
+	var pageTheme = theme?.Theme?.Color ?? "99C329";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		:root {
+			--primary-theme: @GenerateRgba("#99C329");
+			--primary-theme-value: @GenerateRgba("#99C329", false);
+			--page-theme: @GenerateRgba($"#{pageTheme}");
+			--page-theme-value: @GenerateRgba($"#{pageTheme}", false);
+		}
+	</style>
+	@await Html.PartialAsync("~/views/partials/Meta.cshtml", new MetaPartialViewModel(Model, PublishedValueFallback))
+	<link rel="stylesheet" href="~/css/styles.css">
+</head>
+<body class="no-js">
+	@await Html.PartialAsync("~/views/partials/Header.cshtml", Model)
+	<main class="@Model.ContentType.Alias.ToLower().Replace(" ","-")">
+		@RenderBody()
+	</main>
+	@await Html.PartialAsync("~/views/partials/Footer.cshtml", Model)
+
+	<div class="modal">
+		<div class="wrap wrap-small">
+			<div class="content padded-small">
+				<div class="title"></div>
+				<div class="post-title"></div>
+				<div class="text rte">
+				</div>
+				<a class="link button" href="#" target="_blank" style="display: none;"></a>
+			</div>
+		</div>
+
+		<button class="button primary close">Close</button>
+	</div>
+
+	<script src="https://kit.fontawesome.com/bd9198203c.js" crossorigin="anonymous"></script>
+	<script async src="~/scripts/script.js"></script>
+</body>
+</html>
+
+@functions{
+	public string GenerateRgba(string backgroundColor, bool addRgb = true)
+	{
+		var color = ColorTranslator.FromHtml(backgroundColor);
+		int r = Convert.ToInt16(color.R);
+		int g = Convert.ToInt16(color.G);
+		int b = Convert.ToInt16(color.B);
+
+		return addRgb
+			? string.Format("rgb({0}, {1}, {2})", r, g, b)
+			: string.Format("{0}, {1}, {2}", r, g, b);
+	}
+}

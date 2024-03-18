@@ -1,0 +1,17 @@
+﻿@using Umbraco.Extensions
+@inherits UmbracoViewPage<BlockGridItem<ImageAndRichTextBlock>>
+
+<section class="image-and-rich-text padded-medium @(Model.Content.BackgroundGray ? "bg--grey" : "bg--white") @(Model.Content.DisplayImageRight ? "image-right" : "image-left")">
+	<div class="wrap wrap-medium">
+		<div class="content">
+			<div class="image">
+				<img src="@Model.Content.Image?.GetCropUrl("Image and rich text image")" />
+			</div>
+			<div class="content">
+				<div class="rte">
+					@Model.Content.Content
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
